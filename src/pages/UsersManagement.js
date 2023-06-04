@@ -34,6 +34,12 @@ const UsersManagement = () => {
   const roleShop = "ROLE_SHOP";
   const [roleSelected, setRoleSelected] = React.useState("ALL");
 
+  const isValidEmail = (email) => {
+    // Sử dụng biểu thức chính quy để kiểm tra định dạng email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
   React.useEffect(() => {
     fetch(hostUsers, {
       headers: {
@@ -50,6 +56,10 @@ const UsersManagement = () => {
 
   const AddUser = async () => {
     console.log(username, role, email, address, firstName, lastName);
+    if (!isValidEmail(email) ) {
+      alert("Email invalidate!")
+      return
+    }
     const response = await fetch(hostUsers, {
       method: "POST",
       headers: {
@@ -293,7 +303,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputUserName"
                 type="text"
-                placeholder="..."
+                placeholder="User name"
                 onChange={(e) => setUserName(e.target.value)}
               />
             </Form.Group>
@@ -303,7 +313,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputPassword"
                 type="password"
-                placeholder="..."
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
@@ -313,7 +323,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputEmail"
                 type="text"
-                placeholder="..."
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
@@ -323,7 +333,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputFirstName"
                 type="text"
-                placeholder="..."
+                placeholder="First name"
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </Form.Group>
@@ -333,7 +343,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputLastName"
                 type="text"
-                placeholder="..."
+                placeholder="Last name"
                 onChange={(e) => setLastName(e.target.value)}
               />
             </Form.Group>
@@ -343,7 +353,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputAddress"
                 type="text"
-                placeholder="..."
+                placeholder="Address"
                 onChange={(e) => setAddress(e.target.value)}
               />
             </Form.Group>
@@ -372,6 +382,7 @@ const UsersManagement = () => {
                 id="inputUserName"
                 type="text"
                 value={userUpdate.username}
+                placeholder="User name"
                 readOnly={true}
               />
             </Form.Group>
@@ -382,6 +393,7 @@ const UsersManagement = () => {
                 id="inputEmail"
                 type="text"
                 value={userUpdate.email}
+                placeholder="Email"
                 readOnly={true}
               />
             </Form.Group>
@@ -391,7 +403,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputFirstName"
                 type="text"
-                placeholder="..."
+                placeholder="First name"
                 value={userUpdate.firstName}
                 onChange={(e) =>
                   setUserUpdate({
@@ -407,7 +419,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputLastName"
                 type="text"
-                placeholder="..."
+                placeholder="Last name"
                 value={userUpdate.lastName}
                 onChange={(e) =>
                   setUserUpdate({
@@ -423,7 +435,7 @@ const UsersManagement = () => {
               <Form.Control
                 id="inputAddress"
                 type="text"
-                placeholder="..."
+                placeholder="Address"
                 value={userUpdate.address}
                 onChange={(e) =>
                   setUserUpdate({

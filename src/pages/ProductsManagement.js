@@ -12,7 +12,7 @@ const ProductsManagement = () => {
   const closeUpdateProduct = () => setUpdate(false);
   const openUpdateProduct = () => setUpdate(true);
 
-  const [categorySelected, setCetegorySelected] = React.useState("ALL");
+  const [categorySelected, setCategorySelected] = React.useState("ALL");
   const [productsFollowCate, setProductsFollowCate] = React.useState([]);
 
   const [userDetail] = React.useState(JSON.parse(localStorage.getItem("auth")));
@@ -223,7 +223,7 @@ const ProductsManagement = () => {
                 id="select-option"
                 onChange={(e) => {
                   SetProductsFollowCate(e.target.value);
-                  setCetegorySelected(e.target.value);
+                  setCategorySelected(e.target.value);
                 }}
               >
                 <option value="ALL">All products</option>
@@ -258,7 +258,7 @@ const ProductsManagement = () => {
                           {
                             <img
                               src={product.imageUrls[0]}
-                              alt="image"
+                              alt="img"
                               style={{ height: "100px", width: "70px" }}
                             />
                           }
@@ -490,6 +490,7 @@ const ProductsManagement = () => {
                     id="inputProductName"
                     type="text"
                     value={productUpdate.productName}
+                    placeholder="Product name"
                     onChange={(e) => {
                       setProductUpdate({
                         ...productUpdate,
@@ -521,6 +522,9 @@ const ProductsManagement = () => {
                   <Form.Control
                     id="inputDescription"
                     type="text"
+                    as="textarea"
+                    rows={3}
+                    placeholder="Description"
                     value={productUpdate.productDescription}
                     onChange={(e) =>
                       setProductUpdate({

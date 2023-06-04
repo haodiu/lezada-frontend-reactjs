@@ -191,7 +191,7 @@ const OrdersManagement = () => {
                           </button>
                         </td>
                         <td>
-                          <button
+                          {order.orderStatus !== "CART" && order.orderStatus !== "SUCCESS" && <button
                             className="btn-update"
                             onClick={() => {
                               console.log(order);
@@ -200,7 +200,7 @@ const OrdersManagement = () => {
                             }}
                           >
                             update
-                          </button>
+                          </button>}
                         </td>
                         <td>
                           {
@@ -261,7 +261,7 @@ const OrdersManagement = () => {
                 id="inputOrderPhone"
                 type="text"
                 value={orderUpdate.orderPhone}
-                readOnly={false}
+                readOnly={true}
                 onChange={(e) =>
                   setOrderUpdate({
                     ...orderUpdate,
@@ -277,7 +277,7 @@ const OrdersManagement = () => {
                 id="inputOrderAddress"
                 type="text"
                 value={orderUpdate.orderAddress}
-                readOnly={false}
+                readOnly={true}
                 onChange={(e) =>
                   setOrderUpdate({
                     ...orderUpdate,
@@ -300,9 +300,9 @@ const OrdersManagement = () => {
                 <option value={orderUpdate.orderStatus}>
                   {orderUpdate.orderStatus}
                 </option>
-                {orderUpdate.orderStatus !== STATUS[0] && (
+                {/* {orderUpdate.orderStatus !== STATUS[0] && (
                   <option value={STATUS[0]}>{STATUS[0]}</option>
-                )}
+                )} */}
                 {orderUpdate.orderStatus !== STATUS[1] && (
                   <option value={STATUS[1]}>{STATUS[1]}</option>
                 )}
