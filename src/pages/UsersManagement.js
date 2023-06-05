@@ -31,7 +31,7 @@ const UsersManagement = () => {
   const [users, setUsers] = React.useState([]);
   const [usersFollowRole, setUsersFollowRole] = React.useState([]);
   const roleUser = "ROLE_USER";
-  const roleShop = "ROLE_SHOP";
+  const roleShop = "ROLE_ADMIN";
   const [roleSelected, setRoleSelected] = React.useState("ALL");
 
   const isValidEmail = (email) => {
@@ -203,7 +203,7 @@ const UsersManagement = () => {
               >
                 <option value="ALL">All user</option>
                 <option value={roleUser}>Role user</option>
-                <option value={roleShop}>Role shop</option>
+                <option value={roleShop}>Role admin</option>
               </select>
             </div>
           </div>
@@ -294,7 +294,7 @@ const UsersManagement = () => {
                 }}
               >
                 <option value={roleUser}>User</option>
-                <option value={roleShop}>Shop</option>
+                <option value={roleShop}>Admin</option>
               </Form.Select>
             </Form.Group>
 
